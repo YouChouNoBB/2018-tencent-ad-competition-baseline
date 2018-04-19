@@ -1,5 +1,7 @@
 # coding=utf-8
 # @author:bryan
+# blog: https://blog.csdn.net/bryan__
+# github: https://github.com/YouChouNoBB/2018-tencent-ad-competition-baseline
 import pandas as pd
 import lightgbm as lgb
 from sklearn.model_selection import train_test_split
