@@ -93,7 +93,7 @@ def LGB_predict(train_x,train_y,test_x,res):
     res['score'] = clf.predict_proba(test_x)[:,1]
     res['score'] = res['score'].apply(lambda x: float('%.6f' % x))
     res.to_csv('../data/submission.csv', index=False)
-    os.system('zip baseline.zip ../data/submission.csv')
+    os.system('zip ../data/baseline.zip ../data/submission.csv')
     return clf
 
 model=LGB_predict(train_x,train_y,test_x,res)
