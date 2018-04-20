@@ -1,7 +1,7 @@
 ## 项目介绍
 
 - 2018腾讯广告大赛baseline 100行代码带你上0.73
-![Image text](https://github.com/YouChouNoBB/2018-tencent-ad-competition-baseline/tree/master/pic/leadboard.jpg)
+![Image text](https://github.com/YouChouNoBB/2018-tencent-ad-competition-baseline/blob/master/pic/leadboard.jpg)
 
 - 1.首先处理4个G的用户特征
 - 2.拼接用户特征，广告特征
