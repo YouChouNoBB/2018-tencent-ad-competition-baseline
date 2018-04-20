@@ -1,5 +1,6 @@
 ## 项目介绍
-- 2018腾讯广告大赛baseline 线上得分0.73
+
+- 2018腾讯广告大赛baseline 100行代码带你上0.73
 ![image](https://github.com/YouChouNoBB/2018-tencent-ad-competition-baseline/leadboard.jpg)
 
 - 1.首先处理4个G的用户特征
