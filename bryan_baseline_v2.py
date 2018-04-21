@@ -107,6 +107,6 @@ for i in range(cnt):
 
 result=pd.concat(result,axis=1)
 result['score']=np.mean(result,axis=1)
-result=pd.concat([predict['aid','uid'],result['score']],axis=1)
+result=pd.concat([predict[['aid','uid']],result['score']],axis=1)
 result[['aid','uid','score']].to_csv('../data/submission.csv', index=False)
 os.system('zip ../data/baseline.zip ../data/submission.csv')
