@@ -12,7 +12,7 @@ import gc
 import math
 import numpy as np
 
-ad_feature=pd.read_csv('../data/adFeature.csv')
+
 
 def get_user_feature():
     if os.path.exists('../data/userFeature.csv'):
@@ -33,18 +33,25 @@ def get_user_feature():
             user_feature.to_csv('../data/userFeature.csv', index=False)
         gc.collect()
     return user_feature
-train=pd.read_csv('../data/train.csv')
-predict=pd.read_csv('../data/test1.csv')
-train.loc[train['label']==-1,'label']=0
-predict['label']=-1
 
-def batch_predict(slice,index):
-    user_feature=get_user_feature()
-    data=pd.concat([slice,predict])
-    data=pd.merge(data,ad_feature,on='aid',how='left')
-    data=pd.merge(data,user_feature,on='uid',how='left')
-    data=data.fillna('-1')
-    del user_feature,slice
+def get_data():
+    if os.path.exists('../data/data.csv'):
+        return pd.read_csv('../data/data.csv')
+    else:
+        ad_feature = pd.read_csv('../data/adFeature.csv')
+        train=pd.read_csv('../data/train.csv')
+        predict=pd.read_csv('../data/test1.csv')
+        train.loc[train['label']==-1,'label']=0
+        predict['label']=-1
+        user_feature=get_user_feature()
+        data=pd.concat([train,predict])
+        data=pd.merge(data,ad_feature,on='aid',how='left')
+        data=pd.merge(data,user_feature,on='uid',how='left')
+        data=data.fillna('-1')
+        del user_feature
+        return data
+
+def batch_predict(data,index):
     one_hot_feature=['LBS','age','carrier','consumptionAbility','education','gender','house','os','ct','marriageStatus','advertiserId','campaignId', 'creativeId',
            'adCategoryId', 'productId', 'productType']
     vector_feature=['appIdAction','appIdInstall','interest1','interest2','interest3','interest4','interest5','kw1','kw2','kw3','topic1','topic2','topic3']
@@ -100,6 +107,11 @@ def LGB_predict(train_x,train_y,test_x,res,index):
     return res['score'+str(index)]
 
 #数据分片处理，对每片分别训练预测，然后求平均
+data=get_data()
+train=data[data['label']!=-1]
+test=data[data['label']==-1]
+del data
+predict=pd.read_csv('../data/test1.csv')
 cnt=20
 size = math.ceil(len(train) / cnt)
 result=[]
@@ -107,7 +119,7 @@ for i in range(cnt):
     start = size * i
     end = (i + 1) * size if (i + 1) * size < len(train) else len(train)
     slice = train[start:end]
-    result.append(batch_predict(slice,i))
+    result.append(batch_predict(pd.concat([slice,test]),i))
     gc.collect()
 
 result=pd.concat(result,axis=1)
