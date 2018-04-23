@@ -104,6 +104,7 @@ def LGB_predict(train_x,train_y,test_x,res,index):
     res['score'+str(index)] = res['score'+str(index)].apply(lambda x: float('%.6f' % x))
     print(str(index)+' predict finish!')
     gc.collect()
+    res=res.reset_index(drop=True)
     return res['score'+str(index)]
 
 #数据分片处理，对每片分别训练预测，然后求平均
@@ -124,6 +125,7 @@ for i in range(cnt):
 
 result=pd.concat(result,axis=1)
 result['score']=np.mean(result,axis=1)
-result=pd.concat([predict[['aid','uid']],result['score']],axis=1)
+result=result.reset_index(drop=True)
+result=pd.concat([predict[['aid','uid']].reset_index(drop=True),result['score']],axis=1)
 result[['aid','uid','score']].to_csv('../data/submission.csv', index=False)
 os.system('zip ../data/baseline.zip ../data/submission.csv')
