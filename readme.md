@@ -4,7 +4,8 @@
 - 比赛报名地址：algo.qq.com/person/mobile/landingPage?from=dsbryan
 ![Image text](https://github.com/YouChouNoBB/2018-tencent-ad-competition-baseline/blob/master/pic/leadboard.jpg)
 
-- baseline  在内存大于32g的情况下使用，挑整参数，可以上0.74
+- baseline  在内存大于32g的情况下使用，挑整参数，可以上0.74 
+- 线上0.74可以参考：https://pan.baidu.com/s/1o8ntpTnZITjZtwfhfIIOkg
 - 1.首先处理4个G的用户特征
 - 2.拼接用户特征，广告特征
 - 3.将单取值的离散特征使用稀疏方式one-hot
