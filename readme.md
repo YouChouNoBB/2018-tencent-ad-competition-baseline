@@ -1,6 +1,7 @@
 ## 项目介绍
 
 - 2018腾讯广告大赛baseline 100行代码带你上0.73
+- 比赛报名地址：algo.qq.com/person/mobile/landingPage?from=dsbryan
 ![Image text](https://github.com/YouChouNoBB/2018-tencent-ad-competition-baseline/blob/master/pic/leadboard.jpg)
 
 - baseline  在内存大于32g的情况下使用，挑整参数，可以上0.74
