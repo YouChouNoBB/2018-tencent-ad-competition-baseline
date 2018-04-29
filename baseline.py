@@ -27,6 +27,7 @@ else:
                 print(i)
         user_feature = pd.DataFrame(userFeature_data)
         user_feature.to_csv('../data/userFeature.csv', index=False)
+        del userFeature_data
 train=pd.read_csv('../data/train.csv')
 predict=pd.read_csv('../data/test1.csv')
 train.loc[train['label']==-1,'label']=0
