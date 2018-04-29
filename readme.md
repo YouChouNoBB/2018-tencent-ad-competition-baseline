@@ -20,3 +20,6 @@
 ##
 - baseline_v3  只要能读进去数据，join完应该就能跑了
 - 每次训练重新读取的数据，这样应该8g内存就能跑了
+
+##
+--可以先使用 user_feature_tocsv.py 将用户特征转换成csv文件，以便后面直接pd.read_csv读入
