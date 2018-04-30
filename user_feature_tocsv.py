@@ -16,7 +16,7 @@ with open('../data/userFeature.data', 'r') as f:
         userFeature_data.append(userFeature_dict)
         if i % 100000 == 0:
             print(i)
-        if i % 1000000==0:
+        if i % 1000001==0:
             user_feature = pd.DataFrame(userFeature_data)
             user_feature.to_csv('../data/userFeature_'+str(cnt)+'.csv', index=False)
             cnt+=1
