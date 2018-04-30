@@ -25,5 +25,5 @@ with open('../data/userFeature.data', 'r') as f:
     user_feature = pd.DataFrame(userFeature_data)
     user_feature.to_csv('../data/userFeature_' + str(cnt) + '.csv', index=False)
     del userFeature_data, user_feature
-    user_feature=pd.concat([pd.DataFrame('../data/userFeature_' + str(i) + '.csv') for i in range(cnt+1)]).reset_index(drop=True)
+    user_feature=pd.concat([pd.read_csv('../data/userFeature_' + str(i) + '.csv') for i in range(cnt+1)]).reset_index(drop=True)
     user_feature.to_csv('../data/userFeature.csv', index=False)
